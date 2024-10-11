@@ -1,0 +1,304 @@
+@charset "UTF-8";
+/* CSS - 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+a,
+a:link,
+a:visited {
+  color: inherit;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "Pretendard-Regular";
+  font-size: 16px;
+}
+
+img {
+  display: block;
+}
+
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+.wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* 헤더 */
+.header {
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  border-top: 10px solid #ffbe01;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 네비게이션 바 */
+.navbar a {
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.navbar a:hover {
+  color: #db0009;
+}
+.navbar li {
+  display: inline-block;
+  margin-right: 33px;
+}
+
+.menu-bar {
+  border-radius: 50px;
+  background: #ffbe01;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* 아이콘 */
+.icons {
+  padding-left: 2px;
+  display: flex;
+  align-items: center;
+}
+.icons .search-icon,
+.icons .menu-icon {
+  cursor: pointer;
+}
+.icons .search-icon {
+  width: 33px;
+  height: 33px;
+  margin-right: 25px;
+}
+.icons .menu-icon {
+  width: 48px;
+  height: 48px;
+}
+
+/* 로고 */
+.logo {
+  flex-grow: 1;
+}
+.logo img {
+  width: 67px;
+  height: 60px;
+}
+
+/* 캐러셀 */
+.slide-container {
+  overflow: hidden;
+}
+
+.slide-wrapper {
+  width: 400vw;
+  display: flex;
+  transition: transform 1s;
+}
+
+.slide-box {
+  width: 100vw;
+  display: flex;
+  flex-shrink: 0;
+}
+.slide-box img {
+  width: 100%;
+}
+
+/* 캐러셀 버튼 */
+.carousel-button {
+  text-align: center;
+  padding: 13px;
+}
+.carousel-button button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ffbe01;
+  cursor: pointer;
+  margin: 0 6px;
+  border: none;
+}
+.carousel-button button:hover {
+  background-color: #db0009;
+}
+
+/* 언더 메뉴바 */
+.under-menu {
+  background-color: #ffbe01;
+  display: none;
+}
+.under-menu.show-under {
+  display: block;
+}
+
+.navbar-under {
+  text-align: center;
+}
+.navbar-under a {
+  font-size: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  color: #ffffff;
+}
+.navbar-under a:hover {
+  color: #db0009;
+}
+.navbar-under li {
+  padding-bottom: 20px;
+}
+.navbar-under li:nth-child(1) {
+  padding-top: 20px;
+}
+
+/* McDonald's Live 효과 */
+#mclive {
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffbe01;
+  border-top: 2px solid #ffbe01;
+  border-bottom: 2px solid #ffbe01;
+  padding: 20px;
+  text-align: center;
+}
+
+/* 정사각형 */
+.square-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.square-flex .square {
+  position: relative;
+  width: 375px;
+  height: 375px;
+  border: 1px solid #ffbe01;
+  margin: 20px;
+  overflow: hidden;
+}
+.square-flex .square img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.square-flex .square:hover .overlay-wrap {
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+}
+.square-flex .overlay-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  opacity: 0;
+}
+.square-flex .overlay-wrap .overlay {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+}
+
+#more {
+  width: 50px;
+  height: 50px;
+  background-image: url(../img/plus.svg);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  margin: auto;
+  margin-bottom: 18px;
+}
+
+/* 푸터 */
+.footer {
+  width: 100%;
+  background-color: #ffbe01;
+  color: #ffffff;
+}
+.footer .footer-content {
+  height: 250px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.footer li {
+  margin-bottom: 20px;
+}
+.footer li:last-child {
+  margin-bottom: 0;
+}
+
+/*검색창*/
+.search-container {
+  display: none;
+}
+
+.search-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+}
+
+.search {
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 999;
+}
+.search .search-box {
+  width: 300px;
+  padding: 20px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+}
+
+/* 밑줄 */
+.underline {
+  width: 100%;
+  height: 20px;
+  background-color: #ffffff;
+  border-bottom: 10px solid #ffbe01;
+}
+
+/* 미디어 쿼리 */
+@media screen and (max-width: 1200px) {
+  .square {
+    width: 25vw;
+    height: 25vw;
+    margin: 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .navbar li {
+    display: none;
+  }
+}/*# sourceMappingURL=main.css.map */

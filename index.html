@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>맥도날드</title>
+    <link href="style/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="search-container">
+        <div class="search-overlay"></div>
+        <!-- 검색창 -->
+        <div class="search">
+          <input type="text" class="search-box" placeholder="검색하기" />
+        </div>
+      </div>
+      <!-- 상단 헤더 -->
+      <header class="header">
+        <div class="logo">
+          <img src="img/mcdonaldslogo.png" alt="McDonald's 로고" />
+        </div>
+        <!-- 우측 메뉴바 -->
+        <nav class="menu-bar">
+          <ul class="navbar">
+            <li><a href="#">MENU</a></li>
+            <li><a href="#">STORE</a></li>
+            <li><a href="#">WHAT'S NEW</a></li>
+            <li><a href="#">STORY</a></li>
+          </ul>
+          <div class="icons">
+            <img
+              src="img/search.png"
+              alt="돋보기 아이콘"
+              class="search-icon"
+              id="search-icon"
+            />
+            <img
+              src="img/Menu.png"
+              alt="메뉴 아이콘"
+              class="menu-icon"
+              id="menu-icon"
+            />
+          </div>
+        </nav>
+      </header>
+      <!-- 언더 메뉴바 -->
+      <div class="under-menu">
+        <ul class="navbar-under">
+          <li><a href="#">MENU</a></li>
+          <li><a href="#">STORE</a></li>
+          <li><a href="#">WHAT'S NEW</a></li>
+          <li><a href="#">STORY</a></li>
+          <li><a href="#">McDelivery</a></li>
+          <li><a href="#">고객문의</a></li>
+        </ul>
+      </div>
+      <!-- 헤더 끝 -->
+      <!-- 캐러셀 시작 -->
+      <div class="slide-container">
+        <div>
+          <div class="slide-wrapper">
+            <div class="slide-box">
+              <img src="img/banner1.jpg" alt="banner1" />
+            </div>
+            <div class="slide-box">
+              <img src="img/banner2.jpg" alt="banner2" />
+            </div>
+            <div class="slide-box">
+              <img src="img/banner3.jpg" />
+            </div>
+            <div class="slide-box">
+              <img src="img/banner4.jpg" alt="banner4" />
+            </div>
+          </div>
+        </div>
+        <!-- 캐러셀 위치 이동 버튼 -->
+        <div class="carousel-button">
+          <button class="first-button"></button>
+          <button class="second-button"></button>
+          <button class="third-button"></button>
+          <button class="fourth-button"></button>
+        </div>
+      </div>
+      <!-- 맥도날드 라이브 -->
+      <div>
+        <p id="mclive">MacDonald’s Live</p>
+      </div>
+      <div class="square-flex">
+        <div class="square">
+          <div class="overlay-wrap">
+            <div class="overlay">
+              <p>햄버거</p>
+              <p>KRW 5,500</p>
+            </div>
+          </div>
+          <img src="img/hamburger1.png" />
+        </div>
+        <div class="square">
+          <div class="overlay-wrap">
+            <div class="overlay">
+              <p>트리플 치즈버거</p>
+              <p>KRW 6,500</p>
+            </div>
+          </div>
+          <img src="img/hamburger2.png" />
+        </div>
+        <div class="square">
+          <div class="overlay-wrap">
+            <div class="overlay">
+              <p>더블 치즈버거</p>
+              <p>KRW 6,000</p>
+            </div>
+          </div>
+          <img src="img/hamburger3.png" />
+        </div>
+      </div>
+      <button id="more"></button>
+      <!-- 컨테이너 끝 -->
+      <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-category">
+            <ul class="fc">
+              <li><a href="#">고객문의</a></li>
+              <li><a href="#">위치정보</a></li>
+              <li><a href="#">사이트맵</a></li>
+              <li><a href="#">인재채용</a></li>
+            </ul>
+          </div>
+          <div class="footer-intro">
+            <ul class="fi">
+              <li>한국맥도날드(유)</li>
+              <li>대표이사:김기원</li>
+              <li>사업자등록번호: 101-81-26409</li>
+              <li>전화주문: 1600-5252</li>
+            </ul>
+          </div>
+          <div class="footer-sns">
+            <ul class="fs">
+              <li><a href="#">페이스북</a></li>
+              <li><a href="#">인스타</a></li>
+              <li><a href="#">카카오스토리</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- 하단 밑줄 -->
+        <div class="underline"></div>
+      </footer>
+    </div>
+    <!-- 스크립트 -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script>
+      let currentIndex = 0; // 현재 보여줄 데이터의 시작인덱스
+      const itemsPerPage = 3; // 한 번에 표시할 (아이템 데이터) 수
+
+      $("#more").click(function () {
+        $.get("https://kku-git.github.io/Mcdonald_menu/product.json").done(
+          function (data) {
+            const maxItems = data.length; // 데이터의 총 길이
+            const nextIndex = currentIndex + itemsPerPage; // 다음에 보여줄 데이터의 끝 인덱스
+
+            // 데이터의 다 보여줬을경우
+            if (currentIndex >= maxItems) {
+              $("#more").hide(); // more 버튼을 숨김
+              return; // 함수 종료
+            }
+
+            // 현재 페이지의 데이터만 보여줌
+            const slicedData = data.slice(currentIndex, nextIndex);
+            slicedData.forEach((a, i) => {
+              // 이미지 URL 설정
+              const imageUrl = `https://kku-git.github.io/Mcdonald_menu/hamburger/hamburger${
+                currentIndex + i + 1
+              }.png`;
+
+              // 템플릿 생성
+              const 템플릿 = `
+              <div class="square">
+                <div class="overlay-wrap">
+                  <div class="overlay">
+                    <p>${a.title}</p>
+                    <p>${a.price}</p>
+                  </div>
+                </div>
+                <img src="${imageUrl}" alt="${a.title}" />
+              </div>
+            `;
+
+              // square-flex에 템플릿 추가
+              $(".square-flex").append(템플릿);
+            });
+
+            // 인덱스 업데이트 (다음 번 클릭을 위한)
+            currentIndex = nextIndex;
+          }
+        );
+      });
+    </script>
+    <script src="main.js"></script>
+  </body>
+</html>

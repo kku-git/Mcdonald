@@ -1,0 +1,301 @@
+@use "reset";
+// font
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+// 색상변수
+$main_color: #ffbe01;
+$sub_color: #db0009;
+$white_color: #ffffff;
+
+// 전체 틀
+.wrapper {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* 헤더 */
+.header {
+  width: 100%;
+  padding: 20px;
+  background: $white_color;
+  border-top: 10px solid $main_color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 네비게이션 바 */
+.navbar {
+  a {
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: $white_color;
+    &:hover {
+      color: $sub_color;
+    }
+  }
+  li {
+    display: inline-block;
+    margin-right: 33px;
+  }
+}
+
+.menu-bar {
+  border-radius: 50px;
+  background: $main_color;
+  padding: 8px 20px;
+  display: flex;
+  align-items: center;
+}
+
+/* 아이콘 */
+.icons {
+  padding-left: 2px;
+  display: flex;
+  align-items: center;
+
+  .search-icon,
+  .menu-icon {
+    cursor: pointer;
+  }
+
+  .search-icon {
+    width: 33px;
+    height: 33px;
+    margin-right: 25px;
+  }
+
+  .menu-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* 로고 */
+.logo {
+  flex-grow: 1;
+
+  img {
+    width: 67px;
+    height: 60px;
+  }
+}
+
+/* 캐러셀 */
+.slide-container {
+  overflow: hidden;
+}
+
+.slide-wrapper {
+  width: 400vw;
+  display: flex;
+  transition: transform 1s;
+}
+
+.slide-box {
+  width: 100vw;
+  display: flex;
+  flex-shrink: 0;
+  img {
+    width: 100%;
+  }
+}
+
+/* 캐러셀 버튼 */
+.carousel-button {
+  text-align: center;
+  padding: 13px;
+
+  button {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: $main_color;
+    cursor: pointer;
+    margin: 0 6px;
+    border: none;
+
+    &:hover {
+      background-color: $sub_color;
+    }
+  }
+}
+
+/* 언더 메뉴바 */
+.under-menu {
+  background-color: $main_color;
+  display: none;
+
+  &.show-under {
+    display: block;
+  }
+}
+
+.navbar-under {
+  text-align: center;
+
+  a {
+    font-size: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    color: $white_color;
+
+    &:hover {
+      color: $sub_color;
+    }
+  }
+
+  li {
+    padding-bottom: 20px;
+
+    &:nth-child(1) {
+      padding-top: 20px;
+    }
+  }
+}
+
+/* McDonald's Live 효과 */
+#mclive {
+  font-size: 24px;
+  font-weight: 600;
+  color: $main_color;
+  border-top: 2px solid $main_color;
+  border-bottom: 2px solid $main_color;
+  padding: 20px;
+  text-align: center;
+}
+
+/* 정사각형 */
+.square-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  .square {
+    position: relative;
+    width: 375px;
+    height: 375px;
+    border: 1px solid $main_color;
+    margin: 20px;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    &:hover .overlay-wrap {
+      background-color: rgba(0, 0, 0, 0.6);
+      opacity: 1;
+    }
+  }
+  .overlay-wrap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    opacity: 0;
+
+    .overlay {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: white;
+    }
+  }
+}
+
+#more {
+  width: 50px;
+  height: 50px;
+  background-image: url(../img/plus.svg);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block; // 버튼 중앙
+  margin: auto;
+  margin-bottom: 18px;
+}
+
+/* 푸터 */
+.footer {
+  width: 100%;
+  background-color: $main_color;
+  color: $white_color;
+  .footer-content {
+    height: 250px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  li {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+/*검색창*/
+.search-container {
+  display: none;
+}
+.search-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 998; //검색창보다 낮은 z-index 설정
+}
+
+.search {
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // 화면 중앙 고정
+  position: fixed;
+  z-index: 999;
+  .search-box {
+    width: 300px;
+    padding: 20px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+  }
+}
+
+/* 밑줄 */
+.underline {
+  width: 100%;
+  height: 20px;
+  background-color: $white_color;
+  border-bottom: 10px solid $main_color;
+}
+
+/* 미디어 쿼리 */
+@media screen and (max-width: 1200px) {
+  .square {
+    width: 25vw;
+    height: 25vw;
+    margin: 15px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar li {
+    display: none;
+  }
+}
